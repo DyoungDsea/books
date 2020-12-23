@@ -1,0 +1,307 @@
+﻿-- phpMyAdmin SQL Dump
+-- version 3.1.3.1
+-- http://www.phpmyadmin.net
+--
+-- Host: localhost
+-- Generation Time: Dec 21, 2020 at 11:32 AM
+-- Server version: 5.1.33
+-- PHP Version: 5.2.9
+
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+
+--
+-- Database: `bookfrenxy`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admin_account`
+--
+
+CREATE TABLE IF NOT EXISTS `admin_account` (
+  `id` int(22) NOT NULL AUTO_INCREMENT,
+  `full_name` varchar(255) NOT NULL,
+  `email_address` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `about_us` longtext NOT NULL,
+  `status` varchar(30) NOT NULL DEFAULT 'offline',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `admin_account`
+--
+
+INSERT INTO `admin_account` (`id`, `full_name`, `email_address`, `password`, `about_us`, `status`) VALUES
+(1, 'Admininistrator', 'admin@bookfrenxy.com', 'admin100@', 'About us information goes here...', 'online');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `dbooks`
+--
+
+CREATE TABLE IF NOT EXISTS `dbooks` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `ssid` varchar(30) NOT NULL,
+  `dtype` varchar(30) NOT NULL DEFAULT 'single',
+  `dtitle` varchar(250) NOT NULL,
+  `ddescr` mediumtext NOT NULL,
+  `dauthor` varchar(250) NOT NULL,
+  `dcategory` varchar(250) NOT NULL,
+  `dpic` varchar(500) NOT NULL,
+  `dcost` varchar(100) NOT NULL,
+  `dapple` varchar(250) NOT NULL,
+  `dbn` varchar(250) NOT NULL,
+  `damazon` varchar(250) NOT NULL,
+  `dgoogle` varchar(250) NOT NULL,
+  `dkobo` varchar(250) NOT NULL,
+  `dbam` varchar(250) NOT NULL,
+  `dkonga` varchar(250) NOT NULL,
+  `djumia` varchar(250) NOT NULL,
+  `dtime` varchar(30) NOT NULL,
+  `dofficer` varchar(60) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `dbooks`
+--
+
+INSERT INTO `dbooks` (`id`, `ssid`, `dtype`, `dtitle`, `ddescr`, `dauthor`, `dcategory`, `dpic`, `dcost`, `dapple`, `dbn`, `damazon`, `dgoogle`, `dkobo`, `dbam`, `dkonga`, `djumia`, `dtime`, `dofficer`) VALUES
+(1, '20190807120716', 'group', 'The Spirit of Science Fiction ', 'A brief novel that meanders through poetry workshops and unreturned letters to science fiction masters until finding its stride on the back of a motorcycle, The Spirit of Science Fiction reads like an early draft of an accomplished novelist finding his footing with a clear path to something that will eventually be great.', 'Roberto Bolano (2666, The Savage Detectives)', 'Science Fiction', 'photos/2019-08-07-15-07-20-tmg-article_tall.jpg', '$20', 'http://www.eg.com/appple', 'http://www.eg.com/bn', 'http://www.eg.com/amazon', 'http://www.eg.com/gg', 'http://www.eg.com/kobo', 'http://www.eg.com/bam', 'http://www.eg.com/konga', 'http://www.eg.com/jumia', '07-Aug-2019 01:07 pm', ''),
+(2, '20190807120716', 'group', 'So Much Longing in So Little Space: The Art of Edvard Munch ', 'If you enjoyed (and/or finished) Karl Ove Knausgaard\\''s six-volume solipsistic masterwork, My Struggle, you\\''ll find plenty to love about his treatment of Norway\\''s most celebrated painter, Edvard Munch, best known for his iconic \\"The Scream.\\" Part art criticism, part biography, part personal essay.', 'Karl Ove Knausgaard (My Struggle)', 'Arts', 'photos/2019-08-07-15-07-06-tmg-article_tall (1).jpg', '&#8358;2,500', 'http://www.eg.com/appple', '', 'http://www.eg.com/amazon', 'http://www.eg.com/gg', 'http://www.eg.com/kobo', '', 'http://www.eg.com/konga', 'http://www.eg.com/jumia', '07-Aug-2019 01:10 pm', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `manage_adverts`
+--
+
+CREATE TABLE IF NOT EXISTS `manage_adverts` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `dcat` varchar(500) NOT NULL,
+  `dstatus` varchar(30) NOT NULL DEFAULT 'running',
+  `dpic` varchar(9999) NOT NULL,
+  `dsid` varchar(30) NOT NULL,
+  `durl` varchar(500) NOT NULL,
+  `iviews` varchar(30) NOT NULL DEFAULT '1',
+  `ssid` varchar(30) NOT NULL,
+  `idefault` varchar(10) NOT NULL DEFAULT 'no',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
+
+--
+-- Dumping data for table `manage_adverts`
+--
+
+INSERT INTO `manage_adverts` (`id`, `dcat`, `dstatus`, `dpic`, `dsid`, `durl`, `iviews`, `ssid`, `idefault`) VALUES
+(1, '730x90', 'running', 'photos/2017-07-25-21-15-35-ad728x90.jpg', '', '#', '1', '20170725211535', 'yes'),
+(2, '300x250', 'running', 'photos/2017-07-25-21-25-28-300x250.jpg', '', '#', '1', '20170725212528', 'yes'),
+(6, '1140x250', 'running', 'photos/2019-07-31-11-21-23-dpic.png', '', '#', '1', '20190731112123', 'yes'),
+(9, '300x500', 'running', 'photos/2019-08-09-12-42-34-ads_300by500.png', '', '#', '1', '20190809124234', 'yes');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `manage_audios`
+--
+
+CREATE TABLE IF NOT EXISTS `manage_audios` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `dcat` varchar(500) NOT NULL,
+  `dtitle` varchar(250) NOT NULL,
+  `dstatus` varchar(30) NOT NULL DEFAULT 'running',
+  `dpic` varchar(250) NOT NULL,
+  `dsid` varchar(30) NOT NULL,
+  `durl` varchar(500) NOT NULL,
+  `iviews` varchar(30) NOT NULL DEFAULT '1',
+  `ssid` varchar(30) NOT NULL,
+  `idefault` varchar(10) NOT NULL DEFAULT 'no',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+
+--
+-- Dumping data for table `manage_audios`
+--
+
+INSERT INTO `manage_audios` (`id`, `dcat`, `dtitle`, `dstatus`, `dpic`, `dsid`, `durl`, `iviews`, `ssid`, `idefault`) VALUES
+(1, '', 'Child Of Storm', 'running', 'photos/2019-08-09-10-50-55-child-of-storm-34.jpg', '', 'https://www.google.com/url?sa=i&source=images&cd=&ved=2ahUKEwjgncfRwfXjAhWNA2MBHWRSCscQjRx6BAgBEAQ&url=https%3A%2F%2Fwww.kobo.com%2Fgr%2Fen%2Febook%2Fchild-of-storm-34&psig=AOvVaw0Exk8bcKpAZqrG44Cn-N15&ust=1565430615557801', '1', '20190809105055', 'no'),
+(3, '', 'To London Town', 'running', 'photos/2019-08-09-11-03-03-london_town_1908.jpg', '', 'https://librivox.org/to-london-town-by-arthur-morrison/', '1', '20190809110303', 'no'),
+(4, '', 'A Sister of Notre Dame', 'running', 'photos/2019-08-09-12-54-34-firstcommunion_1205.jpg', '', 'https://librivox.org/author/5940?primary_key=5940&search_category=author&search_page=1&search_form=get_results', '1', '20190809125434', 'no'),
+(5, '', 'A Bachelor\\''s Dream', 'running', 'photos/2019-08-09-12-56-18-abachelorsdream_1908.jpeg', '', 'https://librivox.org/a-bachelors-dream-by-mrs-hungerford/', '1', '20190809125618', 'no');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `manage_blog`
+--
+
+CREATE TABLE IF NOT EXISTS `manage_blog` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `dcat` varchar(500) NOT NULL,
+  `dwritter` varchar(100) NOT NULL,
+  `dwritter_bio` varchar(5000) NOT NULL,
+  `dtitle` varchar(1000) NOT NULL,
+  `dpreview` varchar(5000) NOT NULL,
+  `dcontent` longtext NOT NULL,
+  `dpic` varchar(9999) NOT NULL,
+  `dpic2` mediumtext NOT NULL,
+  `dpic3` mediumtext NOT NULL,
+  `dpic4` mediumtext NOT NULL,
+  `dpic5` mediumtext NOT NULL,
+  `dpic6` varchar(250) NOT NULL,
+  `dpic7` varchar(250) NOT NULL,
+  `dpic8` varchar(250) NOT NULL,
+  `dpic9` varchar(250) NOT NULL,
+  `dpic10` varchar(250) NOT NULL,
+  `dsid` varchar(30) NOT NULL,
+  `durl` varchar(9999) NOT NULL,
+  `dsource` varchar(999) NOT NULL,
+  `dtime` varchar(60) NOT NULL,
+  `ilike` varchar(30) NOT NULL DEFAULT '0',
+  `lastupdate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `iviews` varchar(30) NOT NULL DEFAULT '1',
+  `featured` varchar(10) NOT NULL DEFAULT 'no',
+  `ssid` varchar(30) NOT NULL,
+  `ispublished` varchar(10) NOT NULL DEFAULT 'no',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=29 ;
+
+--
+-- Dumping data for table `manage_blog`
+--
+
+INSERT INTO `manage_blog` (`id`, `dcat`, `dwritter`, `dwritter_bio`, `dtitle`, `dpreview`, `dcontent`, `dpic`, `dpic2`, `dpic3`, `dpic4`, `dpic5`, `dpic6`, `dpic7`, `dpic8`, `dpic9`, `dpic10`, `dsid`, `durl`, `dsource`, `dtime`, `ilike`, `lastupdate`, `iviews`, `featured`, `ssid`, `ispublished`) VALUES
+(1, 'Deals', '', '', '7 Nigerian Fashion Designers Chimamanda Brought to our Consciousness', 'This is just a preview... Keeping up with all of the latest must-read books can quickly turn into an overwhelming endeavor -- finish one, add five more to the pile, and the cycle wears on until its simply too unbearable to pay attention anymore.', '<p>In May 2017, Chimamanda Adichie, a renowned Nigerian author, launched the &ldquo;Wear Nigerian&rdquo; project by promoting the project through her Instagram page (chimamanda_adichie). Her aim was to bring awareness to local Nigerian designers by wearing their outfits at public event making them go from obscurity to popularity. Out of the 40 designers she featured, these top seven caught our eyes. Each of these designers were unique and different but all had one thing in common. They were youthful, trendy, urban and chic. Here we have listed the top seven designers showcasing their work and information about them.</p>\r\n\r\n<p><strong>The Ladymaker</strong></p>\r\n\r\n<p>The Ladymaker is a Nigerian lifestyle brand that&nbsp;caters to the modern Nigerian woman. Launched in 2015, they offer&nbsp;Ready-to-Wear womenswear and Made-to-Measure services.</p>\r\n\r\n<p><img alt=\\"\\" src=\\"http://twmagazine.net/wp-content/uploads/2017/06/Chimamanda_Ladymaker-300x281.png\\" style=\\"height:374px; width:400px\\" /></p>\r\n\r\n<p><img alt=\\"\\" src=\\"http://twmagazine.net/wp-content/uploads/2017/06/Ladymakerlookbook-300x284.png\\" style=\\"height:379px; width:400px\\" /></p>\r\n\r\n<p><img alt=\\"\\" src=\\"http://twmagazine.net/wp-content/uploads/2017/06/Ladymakerlookbook2-279x300.png\\" style=\\"height:431px; width:400px\\" /></p>\r\n\r\n<p>Contact Information.</p>\r\n\r\n<p>Website:&nbsp;<a href=\\"http://l.instagram.com/?u=http%3A%2F%2Fwww.theladymaker.com%2F&amp;e=ATMXScjyVauQlty2S75V0gHk8mhQksgdbqC1cUOjzXX7Ic-5Wf7LaGyCnxyBs-vfFIYE-EM\\">www.theladymaker.com</a></p>\r\n\r\n<p>Instagram: @theladymaker</p>\r\n\r\n<p><strong>The Muse Factory</strong></p>\r\n\r\n<p>The Muse Factory is a Ready-to-Wear and Couture fashion line. The brand is for women who want to take fashion risks as almost each and every pair of their outfits have something unique and different that you will not see on a regular day attire</p>\r\n\r\n<p><img alt=\\"\\" src=\\"http://twmagazine.net/wp-content/uploads/2017/06/Chimamanda_musefactory-300x290.png\\" style=\\"height:386px; width:400px\\" /></p>\r\n\r\n<p><img alt=\\"\\" src=\\"http://twmagazine.net/wp-content/uploads/2017/06/musefactorylookbook2-263x300.png\\" style=\\"height:457px; width:400px\\" /></p>\r\n\r\n<p><img alt=\\"\\" src=\\"http://twmagazine.net/wp-content/uploads/2017/06/musefactorylookbook-265x300.png\\" style=\\"height:452px; width:400px\\" /></p>\r\n\r\n<p>Instagram: @themusefactory_</p>\r\n\r\n<p><strong>Zohi Taglit</strong></p>\r\n\r\n<p>Zohi Taglit is a Ready-to-Wear fashion brand that is &ldquo;inspired by Nigerian and Isreali fashion and places emphasis on simplicity and a positive outlook&rdquo;</p>\r\n\r\n<p><img alt=\\"\\" src=\\"http://twmagazine.net/wp-content/uploads/2017/06/Chimamanda_Zohitaglit-279x300.png\\" style=\\"height:430px; width:400px\\" /></p>\r\n\r\n<p><img alt=\\"\\" src=\\"http://twmagazine.net/wp-content/uploads/2017/06/Zohitaglitlookbook-239x300.png\\" style=\\"height:503px; width:400px\\" /></p>\r\n\r\n<p><img alt=\\"\\" src=\\"http://twmagazine.net/wp-content/uploads/2017/06/Zohitaglitlookboo2-236x300.png\\" style=\\"height:509px; width:400px\\" /></p>\r\n\r\n<p>Instagram: @zohi_taglit</p>\r\n\r\n<p><strong>Mae Otti</strong></p>\r\n\r\n<p>MAE OTTI is a Ready-To-Wear fashion label that focuses &ldquo;on a penchant for good tailoring, fine lines and minimal designs combined with bold&nbsp;colors, shapes and timeless silhouettes&rdquo;</p>\r\n\r\n<p><img alt=\\"\\" src=\\"http://twmagazine.net/wp-content/uploads/2017/06/Chimamanda_maeotti-270x300.png\\" style=\\"height:444px; width:400px\\" /></p>\r\n\r\n<p><img alt=\\"\\" src=\\"http://twmagazine.net/wp-content/uploads/2017/06/maeottilookbook-227x300.png\\" style=\\"height:529px; width:400px\\" /></p>\r\n\r\n<p><img alt=\\"\\" src=\\"http://twmagazine.net/wp-content/uploads/2017/06/maeottilookbook2-224x300.png\\" style=\\"height:535px; width:400px\\" /></p>\r\n\r\n<p>Website:&nbsp;<a href=\\"http://l.instagram.com/?u=http%3A%2F%2Fwww.maeotti.com%2F&amp;e=ATMf2m75JVfDgPphMaRY57iy05ZmGutUkRcy667K0B6fkHDx6ac1it6nInkXUPPLcgBiNGM\\">www.maeotti.com</a></p>\r\n\r\n<p>Instagram: @mae_otti</p>\r\n\r\n<p><strong>Lola Baej</strong></p>\r\n\r\n<p>Lola Bae is a Ready-to-Wear fashion collection created by Lola Agbaje. Lola Baej is a simple yet sophisticated brand and can be worn by any woman to give her an elegant modern touch.</p>\r\n\r\n<p><img alt=\\"\\" src=\\"http://twmagazine.net/wp-content/uploads/2017/06/Chimamanda_lolabaej-300x300.png\\" style=\\"height:401px; width:400px\\" /></p>\r\n\r\n<p><img alt=\\"\\" src=\\"http://twmagazine.net/wp-content/uploads/2017/06/lolabaejbook-235x300.png\\" style=\\"height:511px; width:400px\\" /></p>\r\n\r\n<p><img alt=\\"\\" src=\\"http://twmagazine.net/wp-content/uploads/2017/06/lolabaejlookbook2-268x300.png\\" style=\\"height:448px; width:400px\\" /></p>\r\n\r\n<p>Instagram: @lolabaej</p>\r\n\r\n<p><strong>Ladunni Lambo</strong></p>\r\n\r\n<p>Ladunni Lambo is a Ready-to-Wear fashion line. The designs are young and hip but still have a flare of elegance in it.</p>\r\n\r\n<p><img alt=\\"\\" src=\\"http://twmagazine.net/wp-content/uploads/2017/06/Chimamanda_ladunnilambo-245x300.png\\" style=\\"height:490px; width:400px\\" /></p>\r\n\r\n<p><img alt=\\"\\" src=\\"http://twmagazine.net/wp-content/uploads/2017/06/ladunnilambolookbook2-300x224.png\\" style=\\"height:299px; width:400px\\" /></p>\r\n\r\n<p><img alt=\\"\\" src=\\"http://twmagazine.net/wp-content/uploads/2017/06/ladunnilambolookbook-300x220.png\\" style=\\"height:293px; width:400px\\" /></p>\r\n\r\n<p>Instagram: @ladunnilambo</p>\r\n\r\n<p><strong>2207byTBally</strong></p>\r\n\r\n<p>2207byTBally is a Ready-to-Wear modern-chic fashion line created by Tolu Bally. 2207byTBally designs are both fashionable and tasteful.<img alt=\\"\\" src=\\"http://twmagazine.net/wp-content/uploads/2017/06/Chimamanda_2207byTBally-292x300.png\\" style=\\"height:410px; width:400px\\" /></p>\r\n\r\n<p><img alt=\\"\\" src=\\"http://twmagazine.net/wp-content/uploads/2017/06/2207byTBallylookbook-292x300.png\\" style=\\"height:412px; width:400px\\" /></p>\r\n\r\n<p><img alt=\\"\\" src=\\"http://twmagazine.net/wp-content/uploads/2017/06/2207byTBallylookbook2-283x300.png\\" style=\\"height:424px; width:400px\\" /></p>\r\n\r\n<p>Which of these designers do you think is the next big fashion name?</p>\r\n\r\n<p>http://twmagazine.net/2017/06/16/7-nigerian-fashion-designers-chimamanda-brought-to-our-consciousness/</p>\r\n\r\n<p>&nbsp;</p>\r\n', 'photos/2017-07-10-18-06-00-Chimamanda_Ladymaker-580x543.png', '', '', '', '', '', '', '', '', '', '', '', '', '10-Jul-2017 06:06 pm', '0', '2020-12-21 10:56:32', '18', 'no', '20170710180600', 'yes'),
+(4, 'News', '', '', 'Seyi Shay Slays in East Africa!', 'This is just a preview... Keeping up with all of the latest must-read books can quickly turn into an overwhelming endeavor -- finish one, add five more to the pile, and the cycle wears on until its simply too unbearable to pay attention anymore.', '<p>Seyi Shay is currently on a media tour, has been to Uganda and is now in Kenya.</p>\r\n\r\n<p>The singer and fashion icon never ceases to slay with her fashion choices.</p>\r\n\r\n<p>We have some exclusive pictures of her.</p>\r\n\r\n<p>Enjoy!!</p>\r\n\r\n<p>&nbsp;<img alt=\\"\\" src=\\"http://twmagazine.net/wp-content/uploads/2017/06/WhatsApp-Image-2017-05-30-at-4.48.05-AM-300x200.jpeg\\" style=\\"height:401px; width:600px\\" /></p>\r\n\r\n<p><img alt=\\"\\" src=\\"http://twmagazine.net/wp-content/uploads/2017/06/WhatsApp-Image-2017-05-30-at-4.48.07-AM-300x189.jpeg\\" style=\\"height:378px; width:600px\\" /></p>\r\n\r\n<p><img alt=\\"\\" src=\\"http://twmagazine.net/wp-content/uploads/2017/06/WhatsApp-Image-2017-05-30-at-4.48.10-AM-300x192.jpeg\\" style=\\"height:383px; width:600px\\" /></p>\r\n\r\n<p><img alt=\\"\\" src=\\"http://twmagazine.net/wp-content/uploads/2017/06/WhatsApp-Image-2017-05-30-at-4.48.13-AM-1-300x200.jpeg\\" style=\\"height:400px; width:600px\\" /></p>\r\n\r\n<p><img alt=\\"\\" src=\\"http://twmagazine.net/wp-content/uploads/2017/06/WhatsApp-Image-2017-05-30-at-8.51.12-AM-1-225x300.jpeg\\" style=\\"height:800px; width:600px\\" /></p>\r\n\r\n<p><img alt=\\"\\" src=\\"http://twmagazine.net/wp-content/uploads/2017/06/WhatsApp-Image-2017-05-31-at-8.08.14-AM-300x300.jpeg\\" style=\\"height:600px; width:600px\\" /></p>\r\n\r\n<p><img alt=\\"\\" src=\\"http://twmagazine.net/wp-content/uploads/2017/06/WhatsApp-Image-2017-05-31-at-8.08.19-AM-300x300.jpeg\\" style=\\"height:597px; width:600px\\" /></p>\r\n\r\n<p><img alt=\\"\\" src=\\"http://twmagazine.net/wp-content/uploads/2017/06/WhatsApp-Image-2017-05-31-at-8.11.10-AM-291x300.jpeg\\" style=\\"height:620px; width:600px\\" /></p>\r\n\r\n<p>http://twmagazine.net/2017/06/01/seyi-shay-slays-in-east-africa/</p>\r\n', 'photos/2017-07-10-23-14-49-WhatsApp-Image-2017-05-30-at-8.51.12-AM-1-768x1024.jpeg', '', '', '', '', '', '', '', '', '', '', '', '', '10-Jul-2017 11:14 pm', '0', '2019-08-20 15:10:18', '8', 'no', '20170710231449', 'yes'),
+(5, 'News', '', '', 'Wholesalesnaija Releases Itâ€™s Latest Campaign featuring Jojo Lara, Osas Ighodaro Ajibadeâ€™ & Theodora Duru', 'This is just a preview... Keeping up with all of the latest must-read books can quickly turn into an overwhelming endeavor -- finish one, add five more to the pile, and the cycle wears on until its simply too unbearable to pay attention anymore.', '<p>Wholesalesnaija is Nigeria&rsquo;s&rsquo; foremost Hair Company providing great quality, luxurious human hair extensions, bundles, closures and wigs at affordable prices. (Wholesale and Retail). We realize women want options when it comes to choosing hair weave textures and styles thus, we stock most versatile and fashionable collections to suit any lifestyle. We stock the widest range of virgin hair textures in Nigeria (Straight, Wavy, Curly, Kinky&hellip;..) As our customer, you can be rest assured you are getting the 100% Virgin Super Double Drawn Hairs when you buy our human hair weaves, extensions and wigs.</p>\r\n\r\n<p>At Wholesalesnaija, our weaves are chemical free and will enhance the length, colour and texture of natural hair offering a flawless and refined weave or hair style. Our weaves can be washed, blowdried, curled, flat ironed, coloured and permed and still maintain its original beauty and vitality allowing it to be reused for years. Real Hair- When it comes to finding the best quality human hair weave or wigs, ours is a one-stop shop. We carefully and ethically source for authentic virgin hair weaves from different parts of world. We stock raw virgin Indian Hair, South American Hair, Vietnamese Hair, Cambodian Hair, Thai Hair, Burmese Hair etc. Durability- Because we stock only double drawn hairs, our bundles and wigs are designed to be low maintenance, hassle free and easy to manage. Versatility- For most women, wearing a particular style gets boring overtime. At Wholesalesnaija, no matter the style of hair you purchase, it can be manipulated into whatever look you want to create. Here durability is once again assured as our hairs are able to handle heat, minor and major products applications like dyes without a single damage to the hair. Longevity- With proper care, our hair last a lifetime. We indeed sell the best quality. This is a money back guarantee! Affordability- Our mission is to make high quality human hair weaves, wigs and hair extensions accessible to all. We stock huge volume of human hair from the main source thereby we are able to sell high quality human hair at a cheaper rate compared to other hair retailers in the country. We sell to individuals and resellers. Become our customer today&hellip;&hellip;&hellip;Our Hairs Listen!</p>\r\n', 'photos/2017-07-10-23-20-25-01-TCD_0727i-755x487.jpg', '', '', '', '', '', '', '', '', '', '', '', '', '10-Jul-2017 11:20 pm', '0', '2019-08-21 15:09:56', '17', 'no', '20170710232025', 'yes'),
+(6, 'Lifestyle', '', '', 'Four Minute Test That Can Change Your Hair!', 'This is just a preview... Keeping up with all of the latest must-read books can quickly turn into an overwhelming endeavor -- finish one, add five more to the pile, and the cycle wears on until its simply too unbearable to pay attention anymore.', '<p>What does a porosity test have to do with healthy hair?</p>\r\n\r\n<p>To address this topic, let&rsquo;s start with the basics.</p>\r\n\r\n<p>Our hair strands are like chains with links. Once a link is broken or damaged usually due to heat, wear and tear over the years, chemical over processing or over manipulation with hair styles, hair breakage occurs.</p>\r\n\r\n<p><strong><em>Porosity assesses how easily the hair accepts and releases moisture and the products and treatments you give it.</em></strong></p>\r\n\r\n<p>When your hair cuticle becomes damaged and is no longer tightly aligned, it will fail to provide proper coverage to the hair shaft and as a result your hair will be like a basket used to fetch water. No moisture will be retained!</p>\r\n\r\n<p>To determine the porosity of your hair, there&rsquo;s a quick and easy way to test that will take just ten seconds.</p>\r\n\r\n<ol>\r\n	<li><em>Take some shed hair and drop it in a bowl of water. Then watch it either sink or float.</em></li>\r\n	<li><em>If it sinks immediately then your hair is too porous which means it absorbs products and quickly loses the absorbed product to the atmosphere leaving the hair dry and brittle again.</em></li>\r\n	<li><em>If your hair floats, then you have low porosity which means that your hair does not absorb products/moisture easily leaving it also dry and brittle and prone to breakage.</em></li>\r\n	<li><em>If it sinks at a normal rate (between two to four minutes), this is the ideal place to be shows your hair is healthy.</em></li>\r\n</ol>\r\n\r\n<p>So, if your hair is not sinking at a normal rate, what can you do?</p>\r\n\r\n<p>Well your focus should be building the hair cuticle back.</p>\r\n\r\n<p>These three methods can help.</p>\r\n\r\n<ol>\r\n	<li><em>Keratin, a very important component of the hair that links hair bonds together, needs to be infused in your hair through regular protein treatments and specifically formulated hydrolized protien infused hair products.</em></li>\r\n	<li><em>A porosity controlling hair product can also be essential to ensuring that hair porosity levels are put in place. They come in the form of hair conditioners or daily moisturizers.</em></li>\r\n	<li><em>Finally, eating a well-balanced diet with lots of fresh fruits and raw vegetables can help with this issue. Limit the amount of starches, fatty and processed foods you consume and drink plenty of water, with that your hair porosity should be under full control.</em></li>\r\n</ol>\r\n\r\n<p>Have you ever tried this simple hair test?</p>\r\n\r\n<p>What were the results?</p>\r\n\r\n<p>Let us know in the comments section!</p>\r\n\r\n<p>Written By&nbsp;<strong>Daboju Ogburu of&nbsp;<a href=\\"https://www.instagram.com/savvychichairbeautyhub/?hl=en\\">Savvy Chic</a></strong></p>\r\n', 'photos/2017-07-10-23-25-19-daboju-2.jpeg', '', '', '', '', '', '', '', '', '', '', '', '', '10-Jul-2017 11:25 pm', '0', '2019-08-20 15:10:18', '7', 'no', '20170710232519', 'yes'),
+(25, 'Recommended Readings', 'The Bookfrenxy Team', 'If you love books and reading, and passionate about creating safe, empowering spaces that will inspire learning and improved access to education, then this is your call to action!', 'The Best Books of 2019 (So Far)', 'Keeping up with all of the latest must-read books can quickly turn into an overwhelming endeavor -- finish one, add five more to the pile, and the cycle wears on until its simply too unbearable to pay attention anymore.', '<p>Keeping up with all of the latest must-read books can quickly turn into an overwhelming endeavor -- finish one, add five more to the pile, and the cycle wears on until it&#39;s simply too unbearable to pay attention anymore. Here&#39;s another solution: Leave the sorting of what&#39;s good and what&#39;s bad to us, dedicated readers of impeccable taste. We&#39;ll be regularly updating this list of the most exciting titles from 2019 -- join us on this literary journey, won&#39;t you?</p>\r\n', 'photos/2019-08-07-15-11-38-gn-gift_guide_variable_c_2x.jpg', '', '', '', '', '', '', '', '', '', '', '', '', '16-Sep-2019 04:24 pm', '0', '2020-11-16 15:42:45', '38', 'no', '20190807120716', 'yes'),
+(8, 'News', '', '', 'Top 7 Tips For Successfully Meeting & Dating People Online', 'This is just a preview... Keeping up with all of the latest must-read books can quickly turn into an overwhelming endeavor -- finish one, add five more to the pile, and the cycle wears on until its simply too unbearable to pay attention anymore.', '<p>In the last month the surprise engagement of two of Nigeria&rsquo;s top celebrities,&nbsp;<em>Bankole and Adesua1</em>, broke the internet and gave us all a reason to believe in love and marriage again. It also seems to have raised the question of the viability of online dating in Nigeria, West Africa and among other African nations. Online dating is a very popular means of meeting prospective partners in the western world but has been very slow to take root in Africa and African communities in the diaspora. However, over the last few years there has been a rise in the number of successful relationships known to have started online and transitioned to happy marriages.</p>\r\n\r\n<p>Today I would like to share my Top 7 &nbsp;tips for successfully meeting people online. This includes social media platforms like Twitter, Instagram and Facebook, as well as dedicated networking and dating sites like SuruLereLove&trade;</p>\r\n\r\n<ol>\r\n	<li><strong>Be open to the idea:</strong></li>\r\n</ol>\r\n\r\n<p>There is no point going in half-heartedly. It&rsquo;s all or nothing. You have to first of all make yourself comfortable with the idea of meeting someone online. Before you open our DMs, or sign up to that dating site, we recommend that you first make peace with whatever personal barriers would ordinarily prevent you from going through with dating someone who contacts you online.</p>\r\n\r\n<p>For some people it would mean convincing themselves that there&rsquo;s nothing wrong with the answer &ldquo;we met online!&rdquo; when asked, &ldquo;where did you meet?&rdquo; Some people may feel that online dating is a sign of desperation, and that if they were popular enough, or pretty enough, or just plain GOOD enough, then they would be able to find a date the traditional way. But this is just not true. The world has become a global village, and for the first time in the history of humanity, the potential dating pool for a young man living in Lagos, can realistically include a woman who lives in Nairobi, Helsinki or Mumbai. The limitations once imposed on us by distance, borders, culture and time have been almost completely erased by the internet.</p>\r\n\r\n<p>But you don&rsquo;t even have to think that far. Only a few decades ago, you could live in Ibadan and there could be someone living in Eket, and even though you both were perfectly matched, you would never meet and never fall in love, simply because you did not have a common social circle or were never in the same place at the same time. Those days are gone. Your social circle could conceptually be the entire globe, and now there is a very good chance that you both could be on the internet at the exact same time.</p>\r\n\r\n<ol>\r\n	<li><strong>Position yourself to find and be found:</strong></li>\r\n</ol>\r\n\r\n<p>So you are at peace with meeting your partner online? Great! Now it&rsquo;s time to position yourself!</p>\r\n\r\n<p>For some people it can be very simple: Unlock your Twitter, change your Instagram from private. Make your DMs accessible to people who do not follow you. Don&rsquo;t stop there: Follow people you find interesting, accept follow requests, be interesting enough for people to want to follow.</p>\r\n\r\n<p>For someone else it might mean signing up to a dating service like SuruLereLove&trade;, creating a profile, answering the personality questions truthfully, and keeping an open mind.</p>\r\n\r\n<p>Understand that unlike traditional dating, the online world has only a very small window available for you to create a lasting impression. Determine how you want your&nbsp;<em>DM2</em>&nbsp;or your message or your profile to stand out from the sea of others that are available. Be creative, be witty, and be funny. Be whatever you need to be, but make sure that you remain true to who you are.</p>\r\n\r\n<ol>\r\n	<li><strong>Trust your instincts:</strong></li>\r\n</ol>\r\n\r\n<p>It is okay to be picky online! If something doesn&rsquo;t sit right, or raises your suspicion, then don&rsquo;t ignore it. As with traditional dating, there is a lot that we are completely in the dark about, when it comes to the personality and intentions of the person we are meeting online. Sometimes all we can go by is our instincts and intuition, and often times that is all we really need! Look out for people who are pushy and are not prepared to give you your space, people who seem &ldquo;too good to be true&rdquo; and people who are trying to scam or exploit you.</p>\r\n\r\n<p>Your instincts can pick out a person who will not be a good match, long before this fact becomes apparent. Most of us can testify from experience that in hindsight we always seemed to know that that ex who did us bad was going to be no good.</p>\r\n\r\n<ol>\r\n	<li><strong>Do your due diligence:</strong></li>\r\n</ol>\r\n\r\n<p>Just as you would with traditional relationships, due diligence is extremely important if not more important online. Ask questions. Ask them over and over again, until you get a satisfactory answer. Research the person online and offline: Can I find information about this person online? Does their online persona fit with what you observe offline? Do their social media personas match? Who are their friends? How do other people who know them feel about them?</p>\r\n\r\n<p>Meeting people online often means taking their word for who they say they are. Do yourself a favour and go beyond what you are told, or what you can read from their bio or tweets or dating profile. People will always put their best foot forward, (and sometimes that foot is wearing a borrowed shoe).</p>\r\n\r\n<p>It can take time to cut through the many layers of civility or pretence to get to the real person, but as the Yoruba say, Suru l&rsquo;ere.&nbsp;<em>Patience has its rewards</em>!</p>\r\n\r\n<ol>\r\n	<li><strong>Don&rsquo;t take rejection to heart:</strong></li>\r\n</ol>\r\n\r\n<p>Meeting people online is not for the overly sensitive. This is because a small percentage of your attempts to communicate with someone online, will probably go unanswered or unacknowledged. Hopefully articles like this will help to change that, as Nigerians, and Africans as a whole, become more open to the idea of online dating. Until then though, be prepared for rejection</p>\r\n\r\n<p>There are millions of DMs sitting unopened on several phones all across the world tonight. Some people have a few, some have tens, some have hundreds, and you might even have one or two yourself!</p>\r\n\r\n<p>Let&rsquo;s all take a moment to think about the DMs that are on our phones, but have remained unopened. If you are anything like me, you did not ignore them because you were wicked or proud or unkind. You should think about&nbsp;<em>your</em>&nbsp;unopened DM, unread WhatsApp message or unacknowledged invitation to connect on SuruLereLove&trade; in the exact same way. It is most likely that they did not ignore you out of malice. There&rsquo;s probably a very good reason why your DM will stay unopened. Dust yourself off and try again. (Preferably somewhere else)</p>\r\n\r\n<ol>\r\n	<li><strong>Be purposeful:</strong></li>\r\n</ol>\r\n\r\n<p>The beauty of meeting people online is that there is a staggering amount of variety. The trouble is that if you are not absolutely sure of the exact thing you are looking for, you can come out of the process holding the wrong person&rsquo;s hand. Be intentional: Know what you want. Be purposeful: Set out to achieve it.</p>\r\n\r\n<p>Determine for yourself what you are looking for on a dating website or app, or what kind of person you would entertain in your DMs and private messages. Create a clear picture in your mind of the things you do not want, and will not accept. This is&nbsp;<em>very important</em>&nbsp;to do even before you open the first DM or get matched with the first date. You&nbsp;<em>must</em>&nbsp;know what you&nbsp;<em>want</em>before you discover what is&nbsp;<em>available</em>, if not you may end up choosing based on what you see and not based on what you need.</p>\r\n\r\n<p>Remember, &ldquo;If you go to the market with a pocket full of money and no shopping list, you will return home with two baskets full of items, only to find that you forgot to buy the most important thing!&rdquo;</p>\r\n\r\n<ol>\r\n	<li><strong>Protect your safety online:</strong></li>\r\n</ol>\r\n\r\n<p>It is important that we put this here. Don&rsquo;t be lured into a false sense of security. Cyberspace can be dangerous. You want to make sure that you are doing everything possible to keep yourself safe.</p>\r\n\r\n<p>There will be a handful of people who see a person&rsquo;s willingness to put themselves out there, as a sign that they are gullible. Prove them wrong!</p>\r\n\r\n<p><em>Beware of Scammers</em>. Anyone you meet online who asks you to send them money or buy them a gift or make any form of financial transaction is a scammer. Never part with your money. Ever!</p>\r\n\r\n<p><em>&nbsp;</em></p>\r\n\r\n<p><em>Beware of Playboys</em>. Ladies watch out. They may never ask you for money. In fact they might be the ones spending it on you. But in the end all they want is your body and are not interested in the rest of you, the &ldquo;you&rdquo; that really matters.</p>\r\n\r\n<p><em>&nbsp;</em></p>\r\n\r\n<p><em>Beware of Gold-diggers</em>. Gentlemen, don&rsquo;t be caught sleeping. Some chicks are out here trying to find love, while some others are trying to make that money. Don&rsquo;t let your emotions get the better of your head. You don&rsquo;t have to spend all your money to prove that you are interested in someone.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Don&rsquo;t disclose passwords, don&rsquo;t give out personal details. If you choose to meet in person, make sure you choose a neutral&nbsp;<em>public</em>&nbsp;place. Take a friend with you. Let another friend (or two) know exactly where you are going, and how long you will be gone for.</p>\r\n\r\n<p>And finally don&rsquo;t forget to carry&nbsp;<em>vex money3</em></p>\r\n\r\n<p>Olamide and Aisha Craig are the founders of SuruLereLove&trade;,a black owned online dating + matrimonial site that&nbsp;seeks to connect people of African descent.</p>\r\n\r\n<p>SuruLereLove was created to introduce people and start relationships,&nbsp;and is committed to helping its members find life-long-love.</p>\r\n\r\n<p>Find them on social media @SuruLereLove and online at www.comingsoon.surulerelove.com/signup</p>\r\n', 'photos/2017-07-10-23-43-30-DSC_0148-755x487.jpg', '', '', '', '', '', '', '', '', '', '', '', '', '10-Jul-2017 11:43 pm', '0', '2019-08-20 15:10:18', '22', 'no', '20170710234330', 'no'),
+(9, 'Lifestyle', 'The Bookfrenxy Team', 'For some of us who are unaware, Anthony Oluwafemi Olaseni Joshua, who currently became a unified world heavyweight champion is set to return to Nigeria ', 'Dear God, I Am Ready For Anthony Joshua', 'Keeping up with all of the latest must-read books can quickly turn into an overwhelming endeavor -- finish one, add five more to the pile, and the cycle wears on until its simply too unbearable to pay attention anymore.', '<p>For some of us who are unaware, Anthony Oluwafemi Olaseni Joshua, who currently became a unified world heavyweight champion is set to return to Nigeria in August for three days to give back to his country and as a woman who appreciates good looks, a hardworking man and have nursed marrying a British citizen for a long time, I can only see this as a sign that God has been saving me for Anthony.</p>\r\n\r\n<p>As expected, the competition is stiff as a long list of women have publicity declared their love and interest for Anthony, including director extraordinare Kemi Adetiba and thinking about it,I should be worried but as I mentioned earlier God has been saving him for me and so I have peace that he is my soulmate. Instead of looking for ways to rope him into your life, consider this article as &ldquo;5 reasons you should focus on finding your own man&rdquo;.</p>\r\n\r\n<ol>\r\n	<li>Traditional dishes on your list?Way ahead of you: Forget about Calamari and Caviar,too much of those things are not even healthy. &nbsp;I might be Igbo but I make the meanest&nbsp;<em>Eforiro</em>. However, My jollof rice is said to have kept men in relationships longer than they wanted to and of course as an Igbo girl he has to try&nbsp;<em>Ofe Egusi, Ofe Oha, Abacha, Nkwobi, Ikwokirikwo.&nbsp;</em>Best believe that I have him secured with those options.</li>\r\n	<li>Considered going to Church? Never mind, My prayer point was for him to return in the first place: If you think praying with your pastor and spending days in church will help solidify your connection,<em>&nbsp;Nne</em>&nbsp;try again! My prayer point was for him to come home and find me and half of that prayer is already answered, so instead of praying in vain, just pray that he will find me and marry me, that way we all win. After all, the shine theory says once one woman wins, we all win.</li>\r\n	<li>If you muttered, she is Igbo he will gravitate towards me because I am yoruba, best believe I have that in my bag as well: My mother speaks fluent yoruba, I have a B.SC in dating yoruba men and I have dated all sorts, &ldquo;the cool calm and collected&rdquo;, &ldquo;the you must respect me&rdquo;, &ldquo;the over obsessed with family values&rdquo;. Think of it, and I met all their family members so I know how to act, behave around a typical or A-typical yoruba family.</li>\r\n	<li>Interstate marriage is the new cool: As an Igbo woman, I already bring variety to the table. I am well versed in his culture and my culture is so attractive, I can already tell he will be super stoked to be a part of it.</li>\r\n	<li>Bonus Point: Throw in the fact that I am ready to move to London, I am really petite and he can scoop me whenever, his name will fit right into mine &lsquo;Vanessa Joshua&rsquo;, it seems to me this match was made in heaven.</li>\r\n</ol>\r\n\r\n<p>And on this note I hope you can focus on finding your own man and leaving mine to locate me.</p>\r\n', 'photos/2017-07-10-23-48-25-anthony-Joshua-1.jpg', '', '', '', '', '', '', '', '', '', '', '', '', '10-Jul-2017 11:48 pm', '0', '2019-08-20 16:44:10', '66', 'no', '20170710234825', 'yes'),
+(19, 'People', '', '', 'Nigerian Senate Okays Compulsory Treatment Of Gunshot Victims', 'This is just a preview... Keeping up with all of the latest must-read books can quickly turn into an overwhelming endeavor -- finish one, add five more to the pile, and the cycle wears on until its simply too unbearable to pay attention anymore.', '<p>Leke Baiyewu, Abuja<br />\r\n<br />\r\nThe Senate on Tuesday passed the Compulsory Treatment and Care of Victims of Gunshots Bill, which seeks to compel hospitals to treat persons with gunshot wounds before obtaining police report.<br />\r\n<br />\r\nThe bill, which was sent to the Senate by the House of Representatives for concurrence, seeks to establish a law that ensures that victims of gunshot wounds receive necessary treatment from medical workers and assistance from security agencies.<br />\r\n<br />\r\nThe bill also seeks to ensure that every person, including security agents, assist any person with gunshot wounds and ensure that the person is taken to the nearest hospital for treatment.<br />\r\n<br />\r\nAdditionally, the legislation mandates that no person with gunshot wounds shall be refused immediate and adequate treatment by any hospital in Nigeria, whether or not initial monetary deposit is paid.<br />\r\n<br />\r\nPresident of the Senate, Bukola Saraki, in his remarks, noted that not every person shot was a criminal.<br />\r\n<br />\r\nHe said it was important that a legal framework be put into place to avoid unnecessary loss of lives.<br />\r\n<br />\r\nSaraki said, &ldquo;By the passage of this bill, the Senate has moved to ensure that every hospital in Nigeria, both public and private, must accept to treat victims of gunshot wounds without any clearance from the police.<br />\r\n<br />\r\n&ldquo;What we have done is to ensure that everyone is entitled to medical treatment, irrespective of the cause of the shooting. We should reserve judgment for the criminal justice system, and leave healthcare for the medical professionals.&rdquo;<br />\r\n<br />\r\nOther bills for concurrence passed by the Senate on Tuesday, which will be forwarded to the President for assent include the Animal Health and Husbandry Technologies (Registration, etc) Bill, 2017; Corporate Manslaughter Bill, 2017; National Child Protection and Enforcement Agency Bill, 2017; National Intelligence Agency Pension Board Bill, 2017; Nigerian Academy of Science Bill, 2017; and the National Postgraduate College of Medical Laboratory Science Bill.</p>\r\n', 'photos/2017-07-11-18-16-05-senate.jpg', '', '', '', '', '', '', '', '', '', '', '', '', '11-Jul-2017 06:16 pm', '0', '2019-08-20 15:10:18', '24', 'no', '20170711181605', 'yes'),
+(22, 'Voices', '', '', 'Realglitz Magazine - 2nd Edition (Style and Entertainment)', 'This is just a preview... Keeping up with all of the latest must-read books can quickly turn into an overwhelming endeavor -- finish one, add five more to the pile, and the cycle wears on until its simply too unbearable to pay attention anymore.', '<p>If you can see this, then it&#39;s working</p>\r\n', 'photos/2019-07-19-12-51-34-04.jpg', 'photos/2017-11-09-00-47-42-Microsoft_PowerPoint.pdf', '', '', '', '', '', '', '', '', '', '', '', '09-Nov-2017 12:47 am', '0', '2020-11-16 15:39:54', '30', 'no', '20171109004742', 'yes');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `manage_features`
+--
+
+CREATE TABLE IF NOT EXISTS `manage_features` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `dcat` varchar(500) NOT NULL DEFAULT 'Featured Books',
+  `dtitle` varchar(1000) NOT NULL,
+  `dcontent` longtext NOT NULL,
+  `dpic` varchar(9999) NOT NULL,
+  `dsid` varchar(30) NOT NULL,
+  `durl` varchar(9999) NOT NULL,
+  `dsource` varchar(999) NOT NULL,
+  `dtime` varchar(60) NOT NULL,
+  `ilike` varchar(30) NOT NULL DEFAULT '0',
+  `lastupdate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `iviews` varchar(30) NOT NULL DEFAULT '1',
+  `featured` varchar(10) NOT NULL DEFAULT 'no',
+  `ssid` varchar(30) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+--
+-- Dumping data for table `manage_features`
+--
+
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `manage_photos`
+--
+
+CREATE TABLE IF NOT EXISTS `manage_photos` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `dcat` varchar(500) NOT NULL,
+  `dtitle` varchar(250) NOT NULL,
+  `dstatus` varchar(30) NOT NULL DEFAULT 'running',
+  `dpic` varchar(250) NOT NULL,
+  `dsid` varchar(30) NOT NULL,
+  `durl` varchar(500) NOT NULL,
+  `iviews` varchar(30) NOT NULL DEFAULT '1',
+  `ssid` varchar(30) NOT NULL,
+  `idefault` varchar(10) NOT NULL DEFAULT 'no',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `manage_photos`
+--
+
+INSERT INTO `manage_photos` (`id`, `dcat`, `dtitle`, `dstatus`, `dpic`, `dsid`, `durl`, `iviews`, `ssid`, `idefault`) VALUES
+(1, '', 'Interior decoration', 'running', 'photos/2019-08-20-14-50-47-7649650_4e3d292c6d0c783bf601e79c0eb62b7f_jpegaca6364081e6de66252984e034e34806.jpg', '', 'photos/2019-08-20-14-50-47-7649650_4e3d292c6d0c783bf601e79c0eb62b7f_jpegaca6364081e6de66252984e034e34806.jpg', '1', '20190820145047', 'no'),
+(2, '', 'test image', 'running', 'photos/2019-08-21-14-39-14-dashboard.jpg', '', 'photos/2019-08-21-14-39-14-dashboard.jpg', '1', '20190821143914', 'no');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `replies`
+--
+
+CREATE TABLE IF NOT EXISTS `replies` (
+  `id` int(20) NOT NULL AUTO_INCREMENT,
+  `status` varchar(30) NOT NULL,
+  `sender` varchar(30) NOT NULL,
+  `sendername` varchar(250) NOT NULL,
+  `message` varchar(800) NOT NULL,
+  `dpic` varchar(250) NOT NULL,
+  `postid` varchar(20) NOT NULL,
+  `date_time` varchar(60) NOT NULL,
+  `date_time2` varchar(60) NOT NULL,
+  `email` varchar(60) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+--
+-- Dumping data for table `replies`
+--
+
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `subscriptions`
+--
+
+CREATE TABLE IF NOT EXISTS `subscriptions` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `demail` varchar(64) CHARACTER SET utf8 NOT NULL,
+  `pword` varchar(64) NOT NULL,
+  `dcat` varchar(100) NOT NULL,
+  `dprice` varchar(30) NOT NULL DEFAULT '0',
+  `dpaid` varchar(20) NOT NULL DEFAULT 'pending',
+  `dexpire` varchar(30) NOT NULL,
+  `fnotify` varchar(30) NOT NULL,
+  `dname` varchar(264) CHARACTER SET utf8 NOT NULL,
+  `occupation` varchar(64) NOT NULL,
+  `address` varchar(250) NOT NULL,
+  `city` varchar(64) CHARACTER SET utf8 NOT NULL,
+  `state` varchar(64) CHARACTER SET utf8 NOT NULL,
+  `country` varchar(64) CHARACTER SET utf8 NOT NULL,
+  `phone` varchar(64) CHARACTER SET utf8 NOT NULL,
+  `date_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `status` varchar(30) NOT NULL,
+  `session_id` varchar(16) NOT NULL,
+  `ban_date` varchar(60) NOT NULL,
+  `lastlogin` varchar(70) NOT NULL,
+  `dpicture` varchar(500) NOT NULL,
+  `verified` varchar(10) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `subscriptions`
+--
+
+INSERT INTO `subscriptions` (`id`, `demail`, `pword`, `dcat`, `dprice`, `dpaid`, `dexpire`, `fnotify`, `dname`, `occupation`, `address`, `city`, `state`, `country`, `phone`, `date_time`, `status`, `session_id`, `ban_date`, `lastlogin`, `dpicture`, `verified`) VALUES
+(1, 'luzomamicrosystems@gmail.com', 'luzoma', 'Premium', '0', 'paid', '', '', 'Lucky Uzoma', '', '', '', '', '', '', '2017-07-19 18:47:19', 'offline', '20170719184719', '', '', '', 'no'),
+(2, 'roselyn@luzoma.com', 'roselyn', 'Premium', '0', 'expired', '25-Jul-2017', '17-Aug-2017', 'Roseline Uzoma', '', 'Port Harcourt', '', '', '', '0806888888', '2017-07-23 19:55:32', 'offline', '20170723195532', '', '', '', 'yes');
